@@ -1,17 +1,15 @@
 version: '3.8'
-
 services:
   db:
-    image: postgres:16
-    container_name: pettracker_db
+    image: postgres:15
+    container_name: pet_management_db_container
     environment:
-      POSTGRES_USER: user
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: pettracker
+      POSTGRES_DB: pet_management_db
     ports:
       - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+
 
 volumes:
   pgdata:
