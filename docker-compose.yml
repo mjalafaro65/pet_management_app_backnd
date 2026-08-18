@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   db:
+#    looks from internet
     image: postgres:15
     container_name: pet_management_db_container
     environment:
@@ -9,7 +10,18 @@ services:
       POSTGRES_DB: pet_management_db
     ports:
       - "5432:5432"
-
+#  backend:
+##    tell it to not look at internet for img but at root folder
+#    build: .
+#    container_name: pet_management_backend_container
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - db
+#    environment:
+#        SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/pet_management_db
+#        SPRING_DATASOURCE_USERNAME: postgres
+#        SPRING_DATASOURCE_PASSWORD: password
 
 volumes:
   pgdata:
