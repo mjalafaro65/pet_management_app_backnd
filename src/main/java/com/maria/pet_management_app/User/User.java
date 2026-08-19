@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity
-@Table(name="app_users")
+@Entity //jpa entity
+@Table(name="app_users") // not required, defualt is class name
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor()//needed for jpa to create an empty object, can also be a protected(only by class or child) method
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
