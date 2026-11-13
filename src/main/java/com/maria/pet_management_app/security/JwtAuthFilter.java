@@ -39,6 +39,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String token = authHeader.substring(7); // strip "Bearer "
 
+        System.out.println("=== JWT FILTER HIT ===");
+        System.out.println("Token: " + token);
+        System.out.println("isTokenValid: " + jwtUtil.isTokenValid(token));
+
+
         if (jwtUtil.isTokenValid(token)) {
             String email = jwtUtil.extractEmail(token);
 

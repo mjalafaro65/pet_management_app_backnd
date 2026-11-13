@@ -1,8 +1,13 @@
 package com.maria.pet_management_app.User;
 
+import com.maria.pet_management_app.User.DTOs.UpdateProfileRequest;
+import com.maria.pet_management_app.User.DTOs.UserProfileResponse;
+import com.maria.pet_management_app.security.CustomUserDetails;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,10 +35,24 @@ public class UserController {
     }
 
 
-    @PutMapping("/{id}/profile")
+    @PutMapping("/profile")
     public UserProfileResponse updateProfile(
-            @PathVariable Long id,
+            Authentication authentication,
             @Valid @RequestBody UpdateProfileRequest request) {
-        return userService.updateUserProfile(id, request);
+
+        CustomUserDetails userDetails=(CustomUserDetails) authentication.getPrincipal();
+
+
+        return userService.updateUserProfile(userDetails.getId(), request);
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<UserProfileResponse> getUserProfile(Authentication authentication) {
+
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        UserProfileResponse response = userService.getProfile(userDetails.getId());
+
+        return ResponseEntity.ok(response);
     }
 }

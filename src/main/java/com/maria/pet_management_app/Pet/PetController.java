@@ -15,18 +15,24 @@ import java.util.List;
 public class PetController {
     @Autowired
     private PetService petService;
+//
+//    @GetMapping
+//    public List<PetResponse> getAllPets(){
+//        return petService.getAllPets();
+//    }
+//
+//    @PostMapping("/register")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public PetResponse registerPet(@Valid @RequestBody PetRegisterRequest request, @Authentication authentication) {
+//        CustomUserDetails userDetails= (CustomUserDetails) authentication.getPrincipal();
+//
+//
+//
+//        Long currentUserId = userDetails.getId();
+//        return petService.registerPet(request, currentUserId);
+//    }
 
-    @GetMapping
-    public List<PetResponse> getAllPets(){
-        return petService.getAllPets();
-    }
 
-    @PostMapping("/register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public PetResponse registerPet(@Valid @RequestBody PetRegisterRequest request, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        Long currentUserId = userDetails.getUserId();
-        return petService.registerPet(request, currentUserId);
-    }
 
 
 

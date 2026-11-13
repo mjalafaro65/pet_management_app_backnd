@@ -21,7 +21,6 @@ public class ScheduledItem {
     @Id
     //id incremented
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     public Long id;
 
 
@@ -35,7 +34,7 @@ public class ScheduledItem {
 
     //only loads object when called by getter method
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id", nullable = false)
+    @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
 
 

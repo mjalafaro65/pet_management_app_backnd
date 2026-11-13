@@ -48,32 +48,16 @@ public class JwtUtil {
 
     }
 
-
-
-    //validate toke exp and signature
-    public boolean isTokenValid(String token){
-        try{
+    public boolean isTokenValid(String token) {
+        try {
             return !isTokenExpired(token);
-        }catch(JwtException | IllegalArgumentException e){
+        } catch (JwtException | IllegalArgumentException e) {
             return false;
-
-        }
-    }
-
-    //overloaded to check expiration + matching email
-    public boolean isTokenValid(String token, String email){
-        try{
-            final String extractedEmail=extractEmail(token);
-            return (extractedEmail.equals(email) && !isTokenExpired(token));
-
-        }catch(JwtException | IllegalArgumentException e){
-            return false;
-
         }
     }
 
     private boolean isTokenExpired(String token){
-        return !extractAllClaims(token).getExpiration().before(new Date());
+        return extractAllClaims(token).getExpiration().before(new Date());
 
     }
     private Claims extractAllClaims(String token){

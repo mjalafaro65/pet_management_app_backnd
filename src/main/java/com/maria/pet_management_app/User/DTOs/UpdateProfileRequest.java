@@ -1,4 +1,4 @@
-package com.maria.pet_management_app.User;
+package com.maria.pet_management_app.User.DTOs;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

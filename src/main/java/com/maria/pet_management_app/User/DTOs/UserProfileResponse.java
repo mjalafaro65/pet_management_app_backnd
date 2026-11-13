@@ -1,4 +1,7 @@
-package com.maria.pet_management_app.User;
+package com.maria.pet_management_app.User.DTOs;
+
+import com.maria.pet_management_app.User.User;
+import com.maria.pet_management_app.User.UserProfile;
 
 public record UserProfileResponse(
         Long id,

@@ -54,7 +54,8 @@ public class SecurityConfig {
                             .requestMatchers("/api/auth/**").permitAll()
                         // opens up Swagger and your homepage so they don't ask for a password
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                        .anyRequest().authenticated()
+                            .requestMatchers("/api/users/profile").authenticated()
+                            .anyRequest().authenticated()
                     )
                     .sessionManagement(session-> session
                             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -5,6 +5,7 @@ import com.maria.pet_management_app.Pet.PetUserPermission;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,9 @@ public class User {
 
     @Column(nullable = true)
     private String password;
+
+
+    LocalDateTime createdAt;
 
     public User(String email, String password) {
         this.email = email;
@@ -51,6 +55,7 @@ public class User {
 //    public enum AuthProvider {
 //        LOCAL, GOOGLE
 //    }
+
 
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
